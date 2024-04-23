@@ -28,7 +28,12 @@ tokenized_product_descriptions = tokenize_documents(data)
 tfidf_vectorizer = TfidfVectorizer()
 tfidf_matrix = tfidf_vectorizer.fit_transform([' '.join(tokens) for tokens in tokenized_product_descriptions])
 
-k1 = int(input("k = : "))
+k1 = None  # Initialize k1
+
+# Prompt user for input only if k1 is not set
+if k1 is None:
+    k1 = int(input("k? : "))
+
 # Function to process queries
 def process_query(query, k=k1):
     # Tokenize query
